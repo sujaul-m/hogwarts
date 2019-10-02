@@ -9,3 +9,9 @@ also_reload("./models/*")
 get "/" do
   erb(:homepage)
 end
+
+#INDEX ROUTE
+get "/students" do
+  @students = Student.all()
+  erb(:index)
+end
