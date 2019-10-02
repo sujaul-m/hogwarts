@@ -10,11 +10,19 @@ get "/" do
   erb(:homepage)
 end
 
+
 #INDEX ROUTE
 get "/students" do
   @students = Student.all()
   erb(:index)
 end
+
+
+#NEW ROUTE
+get "/students/new" do
+  erb(:new)
+end
+
 
 #CREATE ROUTE
 post "/students" do
@@ -23,10 +31,14 @@ post "/students" do
   erb(:create)
 end
 
-#NEW ROUTE
-get "/students/new" do
-  erb(:new)
+
+#DELETE ROUTE
+post "/students/:id/delete" do
+  @student = Student.find(params["id"])
+  @student.delete()
+  redirect "/students"
 end
+
 
 #SHOW ROUTE
 get "/students/:id" do
