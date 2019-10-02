@@ -16,6 +16,18 @@ get "/students" do
   erb(:index)
 end
 
+#CREATE ROUTE
+post "/students" do
+  @student = Student.new(params)
+  @student.save()
+  erb(:create)
+end
+
+#NEW ROUTE
+get "/students/new" do
+  erb(:new)
+end
+
 #SHOW ROUTE
 get "/students/:id" do
   @student = Student.find(params["id"])
