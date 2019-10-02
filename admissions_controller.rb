@@ -15,3 +15,9 @@ get "/students" do
   @students = Student.all()
   erb(:index)
 end
+
+#SHOW ROUTE
+get "/students/:id" do
+  @student = Student.find(params["id"])
+  erb(:show)
+end
