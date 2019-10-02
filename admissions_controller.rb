@@ -32,11 +32,26 @@ post "/students" do
 end
 
 
+#EDIT ROUTE
+get "/students/:id/edit" do
+  @student = Student.find(params["id"])
+  erb(:edit)
+end
+
+
 #DELETE ROUTE
 post "/students/:id/delete" do
   @student = Student.find(params["id"])
   @student.delete()
   redirect "/students"
+end
+
+
+#UPDATE ROUTE
+post "/students/:id" do
+  @student = Student.new(params)
+  @student.update()
+  erb(:update)
 end
 
 
