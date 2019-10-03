@@ -1,7 +1,7 @@
 <h3 style="text-align:center;"> First Name: <%= @student.first_name() %> </h3>
 <h3 style="text-align:center;"> Last Name: <%= @student.last_name() %> </h3>
 <h3 style="text-align:center;"> Age: <%= @student.age() %> </h3>
-<h3 style="text-align:center;"> House: <%= @student.house() %> </h3>
+<h3 style="text-align:center;"> House: <%= @student.get_house_name %> </h3>
 <form style="text-align:center;" action="/students/<%= @student.id() %>/delete" method="post">
   <input type="submit" value="Expel Student">
 </form>

@@ -1,0 +1,10 @@
+<h1 style="text-align:center;">Here are all the Houses in Hogwarts.</h1>
+<% for house in @houses %>
+  <br>
+  <h3 style="text-align:center;"> House Name: <%= house.house_name %> </h3>
+  <h3 style="text-align:center;"><img src=<%= house.house_logo %> alt="House Logo"> </h3>
+  <h4 style="text-align:center;"> <a href="/houses/<%= house.id %>/students">Show Students in House</a> </h4>
+
+  <br>
+  <hr>
+<% end %>

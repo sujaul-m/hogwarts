@@ -3,6 +3,7 @@ require( 'sinatra/contrib/all' )
 require( 'pry-byebug' )
 
 require_relative("./models/student")
+require_relative("./models/house")
 also_reload("./models/*")
 
 #HOMEPAGE
@@ -17,9 +18,16 @@ get "/students" do
   erb(:index)
 end
 
+#INDEX ROUTE
+get "/houses" do
+  @houses = House.all
+  erb(:index_house)
+end
+
 
 #NEW ROUTE
 get "/students/new" do
+  @houses = House.all
   erb(:new)
 end
 
@@ -35,6 +43,7 @@ end
 #EDIT ROUTE
 get "/students/:id/edit" do
   @student = Student.find(params["id"])
+  @houses = House.all
   erb(:edit)
 end
 
@@ -59,4 +68,11 @@ end
 get "/students/:id" do
   @student = Student.find(params["id"])
   erb(:show)
+end
+
+#SHOW ROUTE - HOUSE
+get "/houses/:id/students" do
+  @house = House.find(params["id"])
+  @students = House.find_student(@house.id)
+  erb(:show_students)
 end

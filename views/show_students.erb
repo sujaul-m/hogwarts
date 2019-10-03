@@ -1,0 +1,7 @@
+<% for student in @students %>
+
+<h3 style="text-align:center;"> First Name: <%= student.first_name() %> </h3>
+<h3 style="text-align:center;"> Last Name: <%= student.last_name() %> </h3>
+<h3 style="text-align:center;"> Age: <%= student.age() %> </h3>
+<h3 style="text-align:center;"> House: <%= student.get_house_name %> </h3>
+<% end %>

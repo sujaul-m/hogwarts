@@ -1,11 +1,18 @@
 require("minitest/autorun")
 require_relative("../student")
+require_relative("../house")
 
 class TestStudent < MiniTest::Test
 
   def setup
-    options = {"id" => 1, "first_name" => "Ron", "last_name" => "Weasley",
-      "age" => 12, "house" => "Gryffindor"}
+
+    house_options = {"id" => 1, "house_name" => "Gryffindor", "house_logo" => "Gryffindor_logo"
+    }
+
+    @house = House.new(house_options)
+
+    options = { "first_name" => "Ron", "last_name" => "Weasley",
+      "age" => 12, "house_id" => @house.id}
 
     @student = Student.new(options)
   end
@@ -25,9 +32,12 @@ class TestStudent < MiniTest::Test
     assert_equal(12, result)
   end
 
-  def test_quantity()
-    result = @student.house()
-    assert_equal("Gryffindor", result)
+  def test_house()
+    result = @student.house_id()
+    p @student
+    p @house
+    p @student.house_id()
+    assert_equal(1, result)
   end
 
 end
